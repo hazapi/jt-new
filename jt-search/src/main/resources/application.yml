@@ -1,0 +1,8 @@
+server:
+  port: 8096
+  servlet:
+    context-path: /
+spring:
+  data:
+    solr:
+      host: http://176.198.114.252:8079/solr/core1

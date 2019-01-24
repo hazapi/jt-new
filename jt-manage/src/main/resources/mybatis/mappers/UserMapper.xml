@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间写法   包名.接口名称  -->
+<mapper namespace="com.jt.manage.mapper.UserMapper">
+						<!--需要配置别名  -->
+	<select id="findAll" resultType="com.jt.manage.pojo.User">
+		select * from user
+	</select>
+
+</mapper>
