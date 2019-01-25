@@ -90,22 +90,16 @@ public class OrderServiceImpl implements OrderService {
 	 *  where created < agoDate and status = 1
 	 *	
 	 */
-	@Override
-	public void updateOrderStatus() {
-		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.MINUTE, -30);  //先去30分钟
-		Date agoDate = calendar.getTime();
-		Order order = new Order();
-		order.setStatus(6);
-		order.setUpdated(new Date());
-		
-		UpdateWrapper<Order> updateWrapper = 
-				new UpdateWrapper<>();
-		updateWrapper
-			.eq("status", 1)
-			.lt("created", agoDate);
-		orderMapper.update(order, updateWrapper);
-	}
+	/*
+	 * @Override public void updateOrderStatus() { Calendar calendar =
+	 * Calendar.getInstance(); calendar.add(Calendar.MINUTE, -30); //先去30分钟 Date
+	 * agoDate = calendar.getTime(); Order order = new Order(); order.setStatus(6);
+	 * order.setUpdated(new Date());
+	 * 
+	 * UpdateWrapper<Order> updateWrapper = new UpdateWrapper<>(); updateWrapper
+	 * .eq("status", 1) .lt("created", agoDate); orderMapper.update(order,
+	 * updateWrapper); }
+	 */
 	
 	
 		

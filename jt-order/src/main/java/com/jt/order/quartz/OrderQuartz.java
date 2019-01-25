@@ -18,7 +18,7 @@ public class OrderQuartz extends QuartzJobBean{
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 		
 		//每分钟执行一次业务逻辑
-		orderService.updateOrderStatus();
-		System.out.println("定时任务执行");
+//		orderService.updateOrderStatus();
+//		System.out.println("定时任务执行");
 	}
 }

@@ -8,6 +8,6 @@ public interface OrderService {
 
 	Order findOrderById(String orderId);
 
-	void updateOrderStatus();
+	//void updateOrderStatus();
 	
 }

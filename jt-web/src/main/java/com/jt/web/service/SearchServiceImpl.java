@@ -26,10 +26,13 @@ public class SearchServiceImpl implements SearchService {
 		String url = "http://search.jt.com/solr/search";
 		
 		Map<String,String> params = new HashMap<>();
+		System.out.println("2:"+params);
 		params.put("q", q);
 		
 		String resultJSON = 
 				httpClient.doGet(url, params);
+		
+		System.out.println("3:"+resultJSON);
 
 		List<SolrResult> list = new ArrayList<>();
 		
@@ -39,6 +42,7 @@ public class SearchServiceImpl implements SearchService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("1:"+list);
 		return list;
 	}
 
