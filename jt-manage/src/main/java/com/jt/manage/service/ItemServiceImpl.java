@@ -91,7 +91,8 @@ public class ItemServiceImpl implements ItemService {
 		
 		return itemDescMapper.selectByPrimaryKey(itemId);
 	}
-
+	
+	//如果遇到了存储过程的问题.一般不会直接更新缓存 直接删除缓存
 	@Override
 	public void updateItem(Item item, String desc) {
 		//完善数据
@@ -104,9 +105,10 @@ public class ItemServiceImpl implements ItemService {
 		itemDesc.setItemDesc(desc);
 		itemDesc.setUpdated(item.getUpdated());
 		itemDescMapper.updateByPrimaryKeySelective(itemDesc);
-		
 		//删除缓存数据
 		jedisCluster.del("ITEM_"+item.getId());
+		
+		
 	}
 
 	//商品表和商品详情表一对一
@@ -115,6 +117,12 @@ public class ItemServiceImpl implements ItemService {
 		
 		itemMapper.deleteByIDS(ids);
 		itemDescMapper.deleteByIDS(ids);
+		
+		//同步更新缓存
+		for (Long id : ids) {
+			jedisCluster.del("ITEM_"+id);
+		}
+		
 	}
 
 	@Override
@@ -122,8 +130,6 @@ public class ItemServiceImpl implements ItemService {
 		
 		return itemMapper.selectByPrimaryKey(itemId);
 	}
-	
-	
 	
 	
 }

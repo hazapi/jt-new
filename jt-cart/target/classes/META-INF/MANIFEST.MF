@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: jt-sso
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: tarena
+Built-By: Administrator
 Implementation-Vendor-Id: com.jt.1809
 Build-Jdk: 1.8.0_71
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo

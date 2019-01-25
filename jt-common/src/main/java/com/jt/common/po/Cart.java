@@ -1,7 +1,6 @@
 package com.jt.common.po;
 
 public class Cart extends BasePojo{
-	
 	private Long id;
 	private Long userId;
 	private Long itemId;
@@ -9,7 +8,6 @@ public class Cart extends BasePojo{
 	private String itemImage;
 	private Long itemPrice;
 	private Integer num;
-	
 	public Long getId() {
 		return id;
 	}
@@ -52,12 +50,4 @@ public class Cart extends BasePojo{
 	public void setNum(Integer num) {
 		this.num = num;
 	}
-	@Override
-	public String toString() {
-		return "Cart [id=" + id + ", userId=" + userId + ", itemId=" + itemId + ", itemTitle=" + itemTitle
-				+ ", itemImage=" + itemImage + ", itemPrice=" + itemPrice + ", num=" + num + "]";
-	}
-	
-	
-
 }

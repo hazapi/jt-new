@@ -3,17 +3,15 @@ package com.jt.common.po;
 import java.io.Serializable;
 import java.util.Date;
 
-
 public class User implements Serializable{
-
-	private static final long serialVersionUID = 1L;
-	private Long id;
-	private String username;
-	private String password;
-	private String phone;
-	private String email;
+	
+	private Long id;			//用户id
+	private String username;	//用户名
+	private String password;	//密码
+	private String phone;		//电话
+	private String email;		//邮箱
 	private Date created;
-	private Date updated;
+	private Date updated;		//时间
 	public Long getId() {
 		return id;
 	}
@@ -61,5 +59,8 @@ public class User implements Serializable{
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", phone=" + phone + ", email="
 				+ email + ", created=" + created + ", updated=" + updated + "]";
 	}
-
+	
+	
+	
+	
 }

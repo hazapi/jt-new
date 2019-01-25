@@ -9,12 +9,14 @@ import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jt.common.po.ItemCat;
+import com.jt.common.service.RedisService;
 import com.jt.manage.mapper.ItemCatMapper;
 import com.jt.manage.vo.EasyUITree;
 
-
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
-
+import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.ShardedJedisPool;
 
 @Service
 public class ItemCatServiceImpl implements ItemCatService {
@@ -77,13 +79,13 @@ public class ItemCatServiceImpl implements ItemCatService {
 				String json = 
 				objectMapper.writeValueAsString(treeList);
 				jedisCluster.set(key, json);
-				System.out.println("用户第一次查询!!!");
+				//System.out.println("用户第一次查询!!!");
 				
 			}else{
 				//表示redis中数据不为null,将json转化为对象
 				treeList =
 				objectMapper.readValue(listJSON,treeList.getClass());
-				System.out.println("用户查询缓存!!!");
+				//System.out.println("用户查询缓存!!!");
 			}
 			
 		} catch (Exception e) {

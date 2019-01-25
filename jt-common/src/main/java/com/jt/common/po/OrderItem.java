@@ -3,9 +3,8 @@ package com.jt.common.po;
 import java.io.Serializable;
 import java.util.Date;
 
-
 public class OrderItem implements Serializable{
-
+	
     private String itemId;
 
     private String orderId;

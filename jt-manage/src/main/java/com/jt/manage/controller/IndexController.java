@@ -26,8 +26,7 @@ public class IndexController {
 
 		return moduleName;
 	}
-	
-	
+
 	
 	
 	

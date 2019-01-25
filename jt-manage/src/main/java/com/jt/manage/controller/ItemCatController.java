@@ -17,7 +17,7 @@ import redis.clients.jedis.JedisCluster;
 @RequestMapping("/item/cat")
 public class ItemCatController {
 
-	@Autowired
+	@Autowired  //默认id形式 之后 class
 	private ItemCatService itemCatService;
 	
 	//查询商品分类信息 
@@ -39,9 +39,4 @@ public class ItemCatController {
 		//long parentId = id == null ? 0L : id;
 		return itemCatService.findItemCatCache(parentId);
 	}
-	
-	
-	
-	
-	
 }

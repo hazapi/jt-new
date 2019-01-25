@@ -15,7 +15,6 @@
 	<settings>
 		<!-- 开启驼峰自动映射 -->
 		<setting name="mapUnderscoreToCamelCase" value="true" />
-		<!-- <setting name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"/> -->
 	</settings>
 	
 	<plugins>
@@ -25,7 +24,6 @@
 			<property name="IDENTITY" value="MYSQL" />
 			<!--通用Mapper接口，多个通用接口用逗号隔开 -->
 			<property name="mappers" value="com.jt.common.mapper.SysMapper" />
-			
 		</plugin>
 	</plugins>
 	

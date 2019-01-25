@@ -1,6 +1,5 @@
 package com.jt.manage.controller.web;
 
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,13 +10,11 @@ import com.jt.manage.pojo.User;
 public class JSONPController {
 	
 	@RequestMapping("/web/testJSONP")
-	public JSONPObject find(String callback) {
-		
+	public JSONPObject find(String callback){
 		User user = new User();
 		user.setId(1809);
-		user.setName("xx");
+		user.setName("tomcat");
 		
-	   return new JSONPObject(callback, user);
+		return new JSONPObject(callback, user);
 	}
-
 }

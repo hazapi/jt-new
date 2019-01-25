@@ -3,14 +3,14 @@ package com.jt.common.po;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 public class Order implements Serializable{
 	
-	//
+	//jt-common中比jt-order中多2个属性!!!!
+	//为了前台参数提交时,进行封装方便
 	private OrderShipping orderShipping;
 	private List<OrderItem> orderItems;
 
-    private String orderId;
+	private String orderId;  //订单号：登录用户id+当前时间戳
 
     private String payment;
 
@@ -18,7 +18,7 @@ public class Order implements Serializable{
 
     private String postFee;
 
-    private Integer status;
+    private Integer status;		//状态：1、未付款2、已付款3、未发货4、已发货5、交易成功6、交易关闭
 
     private Date created;
 

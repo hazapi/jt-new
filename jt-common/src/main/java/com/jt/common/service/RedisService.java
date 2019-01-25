@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisSentinelPool;
-
+import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.ShardedJedisPool;
 
 @Service
 public class RedisService {

@@ -5,6 +5,7 @@
 <div style="padding:10px 10px 10px 10px">
 	<form id="contentAddForm" class="itemForm" method="post">
 		<input type="hidden" name="categoryId"/>
+		
 	    <table cellpadding="5">
 	        <tr>
 	            <td>内容标题:</td>

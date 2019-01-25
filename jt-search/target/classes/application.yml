@@ -5,4 +5,4 @@ server:
 spring:
   data:
     solr:
-      host: http://176.198.114.252:8079/solr/core1
+      host: http://176.198.114.19:8079/solr/core1

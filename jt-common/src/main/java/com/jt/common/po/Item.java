@@ -8,13 +8,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Table(name="tb_item")			//对象与表一一映射
-//对象转换时，忽略未知的错误
+//如果对象转化时,忽略未知属性!!!!
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Item extends BasePojo{
 	
-	/**
-	 * 
-	 */
 	@Id		//表示主键
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long 	id;			//商品的ID
@@ -27,10 +24,9 @@ public class Item extends BasePojo{
 	private Long cid;			//商品分类id号
 	private Integer status;		//状态信息 1正常，2下架
 	
-	
-
-	//为了提交购物车是，展示第一张图片
-	public String[] getImages() {
+	//为了提交购物车时,展现第一张图片 编辑
+	public String[] getImages(){
+		
 		return image.split(",");
 	}
 	
