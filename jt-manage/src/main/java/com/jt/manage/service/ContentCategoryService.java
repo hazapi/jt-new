@@ -16,4 +16,6 @@ public interface ContentCategoryService {
 
 	SysResult deleteContentCategory(Long id);
 
+	Long[] getCategoryId();
+
 }

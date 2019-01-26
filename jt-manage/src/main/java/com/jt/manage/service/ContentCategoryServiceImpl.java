@@ -144,4 +144,25 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 		}
 		return SysResult.oK();
 	}
+
+
+	@Override
+	public Long[] getCategoryId() {
+		
+		ContentCategory contentCategory = new ContentCategory();
+		contentCategory.setIsParent(false);
+		int cCount = contentCategoryMapper.selectCount(contentCategory);
+		
+		Long[] cId = new Long[cCount];
+		List<ContentCategory> cList = contentCategoryMapper.select(contentCategory);
+		
+		int i = 0;
+		for (ContentCategory cc : cList) {
+			System.out.println(cc.toString());
+			cId[i] =(long) cc.getId();
+			System.out.println("后台获取"+cId[i]);
+			i++;
+		}
+		return cId;
+	}
 }
