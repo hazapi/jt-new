@@ -1,9 +1,5 @@
 package com.jt.manage.controller;
 
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,9 +64,16 @@ public class ItemController {
 	@ResponseBody
 	public SysResult instock(Long[] ids){
 		try {
+			int a= itemService.checkstatus(ids);
+			if (a==2) {
+				return SysResult.build(201,"不要重复下架");
+			}else if(a==3) {
+				return SysResult.build(400,"商品已不存在");
+			}else if(a==1) {
 			int status = 2;	//表示下架
 			itemService.updateStatus(ids,status);
 			return SysResult.oK();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -78,14 +81,20 @@ public class ItemController {
 		return SysResult.build(201,"商品下架失败");
 	}
 	
-	//商品的下架
+	//商品的上架
 	@RequestMapping("/reshelf")
 	@ResponseBody
 	public SysResult reshelf(Long[] ids){
 		try {
-			int status = 1;	//表示下架
+			int a= itemService.checkstatus(ids);
+			if(a==1) {
+				return SysResult.build(201,"不要重复上架");
+			}else if(a==3) {
+				return SysResult.build(400, "商品已不存在");
+			}else if(a==2) {
+			int status = 1;	//表示上架
 			itemService.updateStatus(ids,status);
-			return SysResult.oK();
+			return SysResult.oK();}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -126,13 +135,34 @@ public class ItemController {
 	@ResponseBody
 	public SysResult deleteItems(Long[] ids){
 		try {
-			itemService.deleteItems(ids);
+			int a= itemService.checkstatus(ids);
+			if (a==3) {
+		 	return SysResult.build(201,"已不存在该商品");
+			}else if(a==1||a==2){
+			int status = 3;
+			itemService.updateStatus(ids,status);
 			return SysResult.oK();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return SysResult.build(201,"商品删除失败");
 	}
+	@RequestMapping("/check")
+	@ResponseBody
+	public SysResult checkItems(String title) {
+		try {	
+				itemService.checkUpdate(title);
+				return SysResult.oK();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return SysResult.build(400, "操作失败");
+	}
+	
+	
+	
+	
 	
 	
 	

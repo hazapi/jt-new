@@ -18,9 +18,14 @@ public interface ItemService {
 
 	void updateItem(Item item, String desc);
 
-	void deleteItems(Long[] ids);
+	//void deleteItems(Long[] ids, int status);
 
 	Item findItemById(Long itemId);
+
+	int checkstatus(Long[] ids);
+
+	void checkUpdate(String title);
+
 
 	
 }

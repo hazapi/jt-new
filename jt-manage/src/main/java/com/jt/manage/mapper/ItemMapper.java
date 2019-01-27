@@ -2,8 +2,6 @@ package com.jt.manage.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -26,13 +24,20 @@ public interface ItemMapper extends SysMapper<Item>{
 	 * @param rows
 	 * @return
 	 */
-	//@Select("select * from tb_item  order by updated desc limit #{start},#{rows}")
+	@Select("select * from tb_item order by updated desc,status asc limit #{start},#{rows}")
 	List<Item> findItemList(@Param("start") Integer start, @Param("rows") Integer rows);
 	
 	@Select("select name from tb_item_cat where id = #{itemId}")
 	String findItemCatById(Long itemId);
 
 	void updateStatus(@Param("ids")Long[] ids, @Param("status")int status);
+
+	@Select("select status from tb_item where id = #{id}")
+	int selectStatusByIds(long id);
+	
+	@Update("update tb_item set updated =now() where title like concat ('%',#{title},'%')")
+	void checkUpdate(@Param("title")String title);
+
 	
 	
 	

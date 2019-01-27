@@ -9,9 +9,9 @@
 		ctrl + shift + x  大写
 		ctrl + shift + y  小写
 	-->
-	<select id="findItemList" resultType="Item">
+	<!-- <select id="findItemList" resultType="Item">
 		select * from tb_item  order by updated desc limit #{start},#{rows}
-	</select>
+	</select> -->
 	
 	<!--批量修改状态信息  -->
 	<update id="updateStatus">
@@ -22,6 +22,11 @@
 			</foreach>
 		)
 	</update>
+	<!-- <update id="checkUpdate">
+		update tb_item set update = now()
+		where title like   
+		concat('%',#{title},'%')
+	</update> -->
 	
 	
 	

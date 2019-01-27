@@ -112,24 +112,45 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	//商品表和商品详情表一对一
-	@Override
-	public void deleteItems(Long[] ids) {
-		
-		itemMapper.deleteByIDS(ids);
-		itemDescMapper.deleteByIDS(ids);
+	//@Override
+	//public void deleteItems(Long[] ids,int status) {
+		//itemMapper.updateStatus(ids,status);
+		//itemMapper.deleteByIDS(ids);
+		//itemDescMapper.deleteByIDS(ids);
 		
 		//同步更新缓存
-		for (Long id : ids) {
-			jedisCluster.del("ITEM_"+id);
-		}
+		//for (Long id : ids) {
+		//	jedisCluster.del("ITEM_"+id);
+		//}
 		
-	}
+	//}
 
 	@Override
 	public Item findItemById(Long itemId) {
 		
 		return itemMapper.selectByPrimaryKey(itemId);
 	}
+
+	@Override
+	public int checkstatus(Long[] ids) {
+		for (int i = 0; i < ids.length; i++) {
+			long id=(Long)ids[i];
+			int a=itemMapper.selectStatusByIds(id);
+			if (a==2) {
+				return 2;
+			}else if(a==3){
+				return 3;
+			}
+		}
+		
+		return 1;
+	}
+
+	@Override
+	public void checkUpdate(String title) {
+		itemMapper.checkUpdate(title);
+	}
+
 	
 	
 }

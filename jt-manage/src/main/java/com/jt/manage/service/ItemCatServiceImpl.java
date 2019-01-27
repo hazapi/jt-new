@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jt.common.po.ItemCat;
 import com.jt.common.service.RedisService;
+import com.jt.manage.annotation.LogTrack;
 import com.jt.manage.mapper.ItemCatMapper;
 import com.jt.manage.vo.EasyUITree;
 
@@ -39,6 +40,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 	easyUITree.setState("open");
 }*/
 	//根据parentId查询商品分类信息
+	@LogTrack
 	@Override
 	public List<EasyUITree> findItemCatAll(long parentId) {
 		ItemCat itemCat = new ItemCat();
