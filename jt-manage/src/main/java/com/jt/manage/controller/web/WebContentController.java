@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jt.common.po.Content;
 import com.jt.common.po.Item;
 import com.jt.common.po.ItemDesc;
-import com.jt.manage.service.ContentCategoryService;
 import com.jt.manage.service.ContentService;
 import com.jt.manage.service.ItemService;
 
@@ -23,22 +22,11 @@ public class WebContentController {
 
 	@Autowired
 	private ContentService contentService;
-	@Autowired
-	private ContentCategoryService contentCategoryService;
 	
-	@RequestMapping("/findContentByCCId")
+	@RequestMapping("findContentByCCId")
 	public List<Content> findContentByCCId(Long categoryId){
 		
 		return contentService.findContentByCCId(categoryId);
 		
 	}
-	
-	@RequestMapping("/getCategoryId")
-	public Long[] getCategoryId() {
-		
-		return contentCategoryService.getCategoryId();
-		
-	}
-	
-	
 }

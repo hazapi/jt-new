@@ -18,5 +18,4 @@ public interface ContentService {
 
 	SysResult deleteContent(Long[] ids);
 
-
 }
